@@ -56,3 +56,8 @@ Cypress.Commands.add('clickIfTextInListMatches', (selector, findText) => {
         })
     })
 })
+
+Cypress.Commands.add('clickToDeleteBtnInDatagrid', () => {
+    cy.get('.dx-button-danger').should('be.visible').click()
+    cy.get("[aria-label='Evet']").should('be.visible').click()
+})

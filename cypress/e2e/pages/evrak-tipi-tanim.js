@@ -28,8 +28,7 @@ export class EvrakTipiTanim {
 
     delete(searchText) {
         cy.searchInDatagrid(searchText)
-        cy.get('.dx-button-danger').should('be.visible').click()
-        cy.get("[aria-label='Evet']").should('be.visible').click()
+        cy.clickToDeleteBtnInDatagrid()
         cy.verifyToastMessage(exceptedMessage)
 
     }
