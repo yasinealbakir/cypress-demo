@@ -1,5 +1,5 @@
-import { Menu } from "./menu";
-import { EvrakTipiTanim } from "./evrak-tipi-tanim";
+import { Menu } from "../pages/menu";
+import { EvrakTipiTanim } from "../pages/evrak-tipi-tanim";
 import { slowCypressDown } from "cypress-slow-down";
 const menu = new Menu()
 const evrakTipiTanim = new EvrakTipiTanim()

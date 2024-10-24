@@ -1,5 +1,5 @@
-import { Menu } from "./menu";
-import { MalCinsiTanim } from "./mal-cinsi-tanim"
+import { Menu } from "../pages/menu";
+import { MalCinsiTanim } from "../pages/mal-cinsi-tanim"
 import { slowCypressDown } from "cypress-slow-down";
 const menu = new Menu()
 const malCinsiTanim = new MalCinsiTanim()
