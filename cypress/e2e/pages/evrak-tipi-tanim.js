@@ -2,60 +2,37 @@ import { Common } from "./common"
 const common = new Common()
 export class EvrakTipiTanim {
 
-    create(ad, kod, belge, personel) {
+    create(ad, kod, belge, personel, exceptedMessage) {
+        common.clickToAddBtnInToolbar()
 
-        cy.get('.dx-icon-insertrowbelow').if('visible').click()
+        cy.xpath("//dx-text-box[@class='dx-validator dx-visibility-change-handler dx-show-invalid-badge dx-textbox dx-texteditor dx-editor-outlined dx-texteditor-empty dx-widget dx-texteditor-with-floating-label']").clear().type(ad)
 
-        cy.xpath("[data-testid='A54529'] .dx-texteditor-input").type(ad)
-
-        cy.get('.dx-texteditor-masked').type(kod)
-
+        cy.get('.dx-texteditor-masked').clear().type(kod)
         cy.xpath("//dx-select-box[.='Belge']").click()
 
-        cy.xpath("//div[@class='dx-scrollable dx-scrollview dx-visibility-change-handler dx-scrollable-vertical dx-scrollable-simulated dx-list dx-widget dx-collection']//div[@class='dx-scrollable-container']/div/div/div").then(($el) => {
-            cy.wrap($el).each(($item) => {
-
-                if ($item.text().includes(belge)) {
-                    cy.wrap($item).click();
-                    return false;
-                }
-            })
-        })
+        common.clickIfTextInListMatches("//div[@class='dx-scrollable dx-scrollview dx-visibility-change-handler dx-scrollable-vertical dx-scrollable-simulated dx-list dx-widget dx-collection']//div[@class='dx-scrollable-container']/div/div/div", belge)
 
         cy.xpath("//dx-select-box[.='Atanabilen Personel Tipi']").click()
-        cy.xpath("//div[@class='dx-overlay-content dx-popup-normal dx-resizable']//div[@class='dx-scrollview-content']/div").then(($el) => {
-            cy.wrap($el).each(($item) => {
-                if ($item.text().includes(personel)) {
-                    cy.wrap($item).click();
-                    return false;
-                }
-            })
-        })
 
-        cy.xpath("//span[.='Kaydet']").if('visible').click()
+        common.clickIfTextInListMatches("//div[@class='dx-overlay-content dx-popup-normal dx-resizable']//div[@class='dx-scrollview-content']/div", personel)
 
-        cy.get('.dx-toast-message').should('contain', 'Başarı ile kaydedildi.')
+        common.clickToSaveBtnInPopup()
+        common.verifyToastMessage(exceptedMessage)
     }
 
     update(searchText, newVal) {
-
         common.searchInDatagrid(searchText)
-
-        cy.xpath("//dx-button[@class='dx-widget dx-button dx-button-mode-text dx-button-default dx-button-has-icon']").should('be.visible').click()
-
+        common.clickToUpdateBtnInDatagrid()
         cy.get("[data-testid='A54529'] .dx-texteditor-input").clear().type(newVal)
-
-        cy.xpath("//span[.='Kaydet']").if('visible').click()
-
-        cy.get('.dx-toast-message').should('contain', 'Başarı ile güncellendi.')
+        common.clickToSaveBtnInPopup()
+        common.verifyToastMessage(exceptedMessage)
     }
 
     delete(searchText) {
-        
         common.searchInDatagrid(searchText)
         cy.get('.dx-button-danger').should('be.visible').click()
         cy.get("[aria-label='Evet']").should('be.visible').click()
-        cy.get('.dx-toast-message').should('contain', 'Başarı ile silindi.')
+        common.verifyToastMessage(exceptedMessage)
 
     }
 

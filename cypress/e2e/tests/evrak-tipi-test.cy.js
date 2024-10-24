@@ -14,23 +14,23 @@ describe('Ticari Belgelendirme Testleri', { testIsolation: false }, () => {
         });
     })
 
-    it.only('Evrak Tipi Tanım Sayfasını Ziyaret Et', () => {
+    it('Evrak Tipi Tanım Sayfasını Ziyaret Et', () => {
         cy.visit(Cypress.env('preprod'));
         const menuHierarchy = ['Ticari Belgelendirme', 'Ticari İşlemler', 'Tanımlar', 'Evrak Tipi Tanım'];
         menu.clickMenuItem(menuHierarchy, 'ticari-islemler/evrak-tipi-list');
     });
 
     it('Evrak Tipi Tanımlama Testi', () => {
-        evrakTipiTanim.create('test', 100, 'Türk Malı Belgesi', 'Eksper')
+        evrakTipiTanim.create('test', 100, 'Türk Malı Belgesi', 'Eksper', 'Başarı ile kaydedildi.')
     });
 
     it('Evrak Tipi Güncelleme Testi', () => {
-        evrakTipiTanim.update('test', 'test2')
+        evrakTipiTanim.update('test', 'test2', 'Başarı ile güncellendi.')
 
     });
 
     it('Evrak Tipi Kaydının Silinmesi Testi', () => {
-        evrakTipiTanim.delete('test')
+        evrakTipiTanim.delete('test', 'Başarı ile silindi.')
 
     });
 

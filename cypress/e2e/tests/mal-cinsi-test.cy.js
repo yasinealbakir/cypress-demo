@@ -21,15 +21,15 @@ describe('Ticari Belgelendirme Testleri', { testIsolation: false }, () => {
     });
 
     it('Mal Cinsi Tanımlama', () => {
-        malCinsiTanim.create('mal cinsi')
+        malCinsiTanim.create('mal cinsi', 'Başarı ile kaydedildi.')
     });
 
     it('Mal Cinsi Güncelleme', () => {
-        malCinsiTanim.update('mal cinsi', 'mal cinsi güncel')
+        malCinsiTanim.update('mal cinsi', 'mal cinsi güncel', 'Başarı ile güncellendi.')
     });
 
     it('Mal Cinsi Tanım Silme', () => {
-        malCinsiTanim.delete('mal cinsi')
+        malCinsiTanim.delete('mal cinsi', 'Başarı ile silindi.')
     });
 
 });
