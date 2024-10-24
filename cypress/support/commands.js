@@ -22,6 +22,37 @@ Cypress.Commands.add('login', (username, password) => {
         cy.url().should('contains', 'dashboard')
 
     })
+})
 
+Cypress.Commands.add('searchInDatagrid', (val) => {
+    cy.get("[aria-label='Tabloda ara']").should('be.visible').clear().type(val)
+    cy.get('.dx-datagrid-summary-item').should('have.text', 'Toplam: 1')
+})
 
+Cypress.Commands.add('verifyToastMessage', (text) => {
+    cy.get('.dx-toast-message').should('contain', text)
+})
+
+Cypress.Commands.add('clickToSaveBtnInPopup', () => {
+    cy.xpath("//span[.='Kaydet']").if('visible').click()
+})
+
+Cypress.Commands.add('clickToUpdateBtnInDatagrid', () => {
+    cy.xpath("//dx-button[@class='dx-widget dx-button dx-button-mode-text dx-button-default dx-button-has-icon']").should('be.visible').click()
+})
+
+Cypress.Commands.add('clickToAddBtnInToolbar', () => {
+    cy.get('.dx-icon-insertrowbelow').if('visible').click()
+})
+
+Cypress.Commands.add('clickIfTextInListMatches', (selector, findText) => {
+    cy.xpath(selector).then(($el) => {
+        cy.wrap($el).each(($item) => {
+
+            if ($item.text().includes(findText)) {
+                cy.wrap($item).click();
+                return false;
+            }
+        })
+    })
 })
