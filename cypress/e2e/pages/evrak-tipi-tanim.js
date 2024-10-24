@@ -1,3 +1,5 @@
+import { Common } from "./common"
+const common = new Common()
 export class EvrakTipiTanim {
 
     create(ad, kod, belge, personel) {
@@ -36,9 +38,8 @@ export class EvrakTipiTanim {
     }
 
     update(searchText, newVal) {
-        cy.get("[aria-label='Tabloda ara']").should('be.visible').clear().type(searchText)
 
-        cy.get('.dx-datagrid-summary-item').should('have.text', 'Toplam: 1')
+        common.searchInDatagrid(searchText)
 
         cy.xpath("//dx-button[@class='dx-widget dx-button dx-button-mode-text dx-button-default dx-button-has-icon']").should('be.visible').click()
 
@@ -50,8 +51,8 @@ export class EvrakTipiTanim {
     }
 
     delete(searchText) {
-        cy.get("[aria-label='Tabloda ara']").should('be.visible').clear().type(searchText)
-        cy.get('.dx-datagrid-summary-item').should('have.text', 'Toplam: 1')
+        
+        common.searchInDatagrid(searchText)
         cy.get('.dx-button-danger').should('be.visible').click()
         cy.get("[aria-label='Evet']").should('be.visible').click()
         cy.get('.dx-toast-message').should('contain', 'Başarı ile silindi.')
