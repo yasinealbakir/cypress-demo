@@ -3,6 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   projectId: "vvb4ks",
   reporter: 'cypress-mochawesome-reporter',
+  defaultCommandTimeout: 15000, //default 4 sn olan değeri 15sn olarak değiştirmek için
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here

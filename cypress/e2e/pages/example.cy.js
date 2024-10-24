@@ -29,7 +29,7 @@ describe('Ticari Belgelendirme Testleri', { testIsolation: false }, () => {
     });
 
     it('Mal Cinsi Tanım Silme', () => {
-        malCinsiTanim.delete('mal cinsi')
+        malCinsiTanim.delete()
     });
 
 });
