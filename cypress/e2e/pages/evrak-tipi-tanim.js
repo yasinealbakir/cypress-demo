@@ -1,6 +1,6 @@
 export class EvrakTipiTanim {
 
-    create(ad, kod, belge, personel, exceptedMessage) {
+    create(ad, kod, belge, personel, expectedMessage) {
         cy.clickToAddBtnInToolbar()
 
         cy.xpath("//dx-text-box[@class='dx-validator dx-visibility-change-handler dx-show-invalid-badge dx-textbox dx-texteditor dx-editor-outlined dx-texteditor-empty dx-widget dx-texteditor-with-floating-label']").clear().type(ad)
@@ -15,21 +15,21 @@ export class EvrakTipiTanim {
         cy.clickIfTextInListMatches("//div[@class='dx-overlay-content dx-popup-normal dx-resizable']//div[@class='dx-scrollview-content']/div", personel)
 
         cy.clickToSaveBtnInPopup()
-        cy.verifyToastMessage(exceptedMessage)
+        cy.verifyToastMessage(expectedMessage)
     }
 
-    update(searchText, newVal) {
+    update(searchText, newVal, expectedMessage) {
         cy.searchInDatagrid(searchText)
         cy.clickToUpdateBtnInDatagrid()
         cy.get("[data-testid='A54529'] .dx-texteditor-input").clear().type(newVal)
         cy.clickToSaveBtnInPopup()
-        cy.verifyToastMessage(exceptedMessage)
+        cy.verifyToastMessage(expectedMessage)
     }
 
-    delete(searchText) {
+    delete(searchText, expectedMessage) {
         cy.searchInDatagrid(searchText)
         cy.clickToDeleteBtnInDatagrid()
-        cy.verifyToastMessage(exceptedMessage)
+        cy.verifyToastMessage(expectedMessage)
 
     }
 
