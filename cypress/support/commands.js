@@ -75,5 +75,4 @@ Cypress.Commands.add('export', (fileName, fileExtension) => {
 Cypress.Commands.add('dragAndDrop', (text) => {
     cy.get('#dx-col-11 > .dx-datagrid-text-content').drag('.dx-group-panel-message');
     cy.get('.dx-group-panel-message').should('contain', text)
-
 })

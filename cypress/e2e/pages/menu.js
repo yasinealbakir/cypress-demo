@@ -13,7 +13,7 @@ export class Menu {
                 currentSelector += subMenuItem + subMenuSelector;
             }
 
-            cy.get(currentSelector, { timeout: 10000 }).then(($el) => {
+            cy.get(currentSelector,).then(($el) => {
                 cy.step('Menüyü gezecek')
                 cy.wrap($el).each(($item) => {  //'each'- eldeki bir dizi içerisinde dönmek ve istenileni yaptırmak için kullanılır.
                     if ($item.text().includes(menuText)) {
