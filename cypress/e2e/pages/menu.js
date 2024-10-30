@@ -39,4 +39,12 @@ export class Menu {
         })
     }
 
+    searchInMenu(searchText, clickItem) {
+        cy.get("[placeholder='Menüde Ara']").clear().type(searchText)
+        cy.clickIfTextInListMatches("//div[@class='mat-autocomplete-panel mat-autocomplete-visible']/mat-option", clickItem)
+
+    }
+
+
+
 }

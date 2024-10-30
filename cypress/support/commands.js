@@ -47,15 +47,20 @@ Cypress.Commands.add('clickToAddBtnInToolbar', () => {
 
 Cypress.Commands.add('clickIfTextInListMatches', (selector, findText) => {
     cy.xpath(selector).then(($el) => {
+        const matched = Cypress.Promise.resolve();
         cy.wrap($el).each(($item) => {
-
-            if ($item.text().includes(findText)) {
-                cy.wrap($item).click();
+            const itemText = $item.text().trim();
+            // Tam eşleşmeyi kontrol et, içinde geçiş olanları engelle
+            if (itemText === findText) {
+                matched.then(() => {
+                    cy.wrap($item).click();
+                });
                 return false;
             }
-        })
-    })
-})
+            return matched;
+        });
+    });
+});
 
 Cypress.Commands.add('clickToDeleteBtnInDatagrid', () => {
     cy.get('.dx-button-danger').should('be.visible').click()
