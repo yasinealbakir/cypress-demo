@@ -33,4 +33,9 @@ export class EvrakTipiTanim {
 
     }
 
+    export(fileName, fileExtension) {
+        cy.export(fileName, fileExtension)
+
+    }
+
 }

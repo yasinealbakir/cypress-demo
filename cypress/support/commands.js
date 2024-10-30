@@ -66,3 +66,8 @@ Cypress.Commands.add('clickToDeleteBtnInDatagrid', () => {
     cy.get('.dx-button-danger').should('be.visible').click()
     cy.get("[aria-label='Evet']").should('be.visible').click()
 })
+
+Cypress.Commands.add('export', (fileName, fileExtension) => {
+    cy.get(':nth-child(2) > .dx-item-content > .dx-widget > .dx-button-content').click()
+    cy.readFile('cypress/downloads/' + fileName + '.' + fileExtension).should('exist')
+})

@@ -34,4 +34,9 @@ describe('Ticari Belgelendirme Testleri', { testIsolation: false }, () => {
 
     });
 
+    it('Excel Export Testi', () => {
+        evrakTipiTanim.export('Ticari İşlemler Evrak Tipi Listesi', 'xlsx')
+
+    })
+
 });
