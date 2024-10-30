@@ -71,3 +71,9 @@ Cypress.Commands.add('export', (fileName, fileExtension) => {
     cy.get(':nth-child(2) > .dx-item-content > .dx-widget > .dx-button-content').click()
     cy.readFile('cypress/downloads/' + fileName + '.' + fileExtension).should('exist')
 })
+
+Cypress.Commands.add('dragAndDrop', (text) => {
+    cy.get('#dx-col-11 > .dx-datagrid-text-content').drag('.dx-group-panel-message');
+    cy.get('.dx-group-panel-message').should('contain', text)
+
+})

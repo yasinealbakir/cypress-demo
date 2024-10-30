@@ -20,6 +20,7 @@ import 'cypress-plugin-steps'
 import 'cypress-if'
 import 'cypress-mochawesome-reporter/register'
 import 'cypress-xpath'
+import 'cypress-drag-drop';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

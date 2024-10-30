@@ -14,7 +14,7 @@ describe('Ticari Belgelendirme Testleri', { testIsolation: false }, () => {
         });
     })
 
-    it('Evrak Tipi Tanım Sayfasını Ziyaret Et', () => {
+    it.only('Evrak Tipi Tanım Sayfasını Ziyaret Et', () => {
         cy.visit(Cypress.env('preprod'));
         const menuHierarchy = ['Ticari Belgelendirme', 'Ticari İşlemler', 'Tanımlar', 'Evrak Tipi Tanım'];
         menu.clickMenuItem(menuHierarchy, 'ticari-islemler/evrak-tipi-list');
@@ -36,6 +36,11 @@ describe('Ticari Belgelendirme Testleri', { testIsolation: false }, () => {
 
     it('Excel Export Testi', () => {
         evrakTipiTanim.export('Ticari İşlemler Evrak Tipi Listesi', 'xlsx')
+
+    })
+
+    it.only('Kolon Sürükle Bırak Testi', () => {
+        cy.dragAndDrop('Ad')
 
     })
 
