@@ -12,7 +12,6 @@ export class MalCinsiTanim {
         cy.get('.dx-validator .dx-texteditor-input').should('be.visible').clear().type(newVal)
         cy.clickToSaveBtnInPopup()
         cy.verifyToastMessage(expectedMessage)
-
     }
 
     delete(searchText, expectedMessage) {

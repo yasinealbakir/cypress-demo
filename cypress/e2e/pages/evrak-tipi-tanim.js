@@ -30,12 +30,10 @@ export class EvrakTipiTanim {
         cy.searchInDatagrid(searchText)
         cy.clickToDeleteBtnInDatagrid()
         cy.verifyToastMessage(expectedMessage)
-
     }
 
     export(fileName, fileExtension) {
         cy.export(fileName, fileExtension)
-
     }
 
 }

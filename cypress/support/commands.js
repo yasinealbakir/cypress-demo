@@ -50,7 +50,6 @@ Cypress.Commands.add('clickIfTextInListMatches', (selector, findText) => {
         const matched = Cypress.Promise.resolve();
         cy.wrap($el).each(($item) => {
             const itemText = $item.text().trim();
-            // Tam eşleşmeyi kontrol et, içinde geçiş olanları engelle
             if (itemText === findText) {
                 matched.then(() => {
                     cy.wrap($item).click();
