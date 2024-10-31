@@ -26,6 +26,7 @@ export class Menu {
         });
         cy.step('Doğru ekranının açıldığını kontrol edecek.')
         cy.url().should('contains', expectedUrl)
+        cy.get('#kt_aside_toggler').click()
     };
 
     menuIsimleriniYazdir() {

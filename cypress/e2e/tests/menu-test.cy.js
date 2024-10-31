@@ -1,6 +1,8 @@
 import { Menu } from "../pages/menu";
+import { Header } from "../pages/header";
 import { slowCypressDown } from "cypress-slow-down";
 const menu = new Menu()
+const header = new Header()
 
 slowCypressDown(100)
 describe('Menü Testleri', { testIsolation: false }, () => {
@@ -12,7 +14,7 @@ describe('Menü Testleri', { testIsolation: false }, () => {
         });
     })
 
-    it.only('Ekran Ziyaret Et', () => {
+    it('Ekran Ziyaret Et', () => {
         cy.visit(Cypress.env('preprod'));
         menu.searchInMenu('evrak', 'Evrak Tanım')
     });
@@ -20,6 +22,11 @@ describe('Menü Testleri', { testIsolation: false }, () => {
     it('Menü Ağacından Ekran Ziyaret Et', () => {
         cy.visit(Cypress.env('preprod'));
         const menuHierarchy = ['Ticari Belgelendirme', 'Ticari İşlemler', 'Tanımlar', 'Bilirkişi Dönem Tanım'];
-        menu.clickMenuItem(menuHierarchy, 'ticari-islemler/evrak-tipi-list');
+        menu.clickMenuItem(menuHierarchy, '/ticari-islemler/bilirkisi-donem-tanim-list');
     });
+
+    it('Oturum Kapatma Testi', () => {
+        header.signOut()
+    });
+
 });
