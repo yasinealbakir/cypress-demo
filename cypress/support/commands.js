@@ -75,3 +75,7 @@ Cypress.Commands.add('dragAndDrop', (text) => {
     cy.get('#dx-col-11 > .dx-datagrid-text-content').drag('.dx-group-panel-message');
     cy.get('.dx-group-panel-message').should('contain', text)
 })
+
+Cypress.Commands.add('clickExpandBtnInDatagrid', () => {
+    cy.get('.dx-group-row > .dx-command-expand').click()
+})

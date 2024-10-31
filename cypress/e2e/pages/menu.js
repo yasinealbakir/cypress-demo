@@ -1,7 +1,8 @@
 let parentMenuSelector = '#kt_aside_menu > ul > li';
 let subMenuSelector = ' > div > ul > li';
 let subMenuItem = '.kt-menu__item--open.kt-menu__item.kt-menu__item--submenu';
-
+let listMenuItems = "//div[@class='mat-autocomplete-panel mat-autocomplete-visible']/mat-option"
+let txtMenudeAra = "[placeholder='Menüde Ara']"
 export class Menu {
     clickMenuItem = (menuHierarchy, expectedUrl) => {
         let currentSelector = parentMenuSelector;
@@ -25,7 +26,7 @@ export class Menu {
     };
 
     searchInMenu(searchText, clickItem) {
-        cy.get("[placeholder='Menüde Ara']").clear().type(searchText)
-        cy.clickIfTextInListMatches("//div[@class='mat-autocomplete-panel mat-autocomplete-visible']/mat-option", clickItem)
+        cy.get(txtMenudeAra).clear().type(searchText)
+        cy.clickIfTextInListMatches(listMenuItems, clickItem)
     }
 }
