@@ -45,8 +45,24 @@ Cypress.Commands.add('clickToAddBtnInToolbar', () => {
     cy.get('.dx-icon-insertrowbelow').if('visible').click()
 })
 
-Cypress.Commands.add('clickIfTextInListMatches', (selector, findText) => {
+Cypress.Commands.add('clickIfTextInListMatchesXpath', (selector, findText) => {
     cy.xpath(selector).then(($el) => {
+        const matched = Cypress.Promise.resolve();
+        cy.wrap($el).each(($item) => {
+            const itemText = $item.text().trim();
+            if (itemText === findText) {
+                matched.then(() => {
+                    cy.wrap($item).click();
+                });
+                return false;
+            }
+            return matched;
+        });
+    });
+});
+
+Cypress.Commands.add('clickIfTextInListMatchesCssSelector', (selector, findText) => {
+    cy.get(selector).then(($el) => {
         const matched = Cypress.Promise.resolve();
         cy.wrap($el).each(($item) => {
             const itemText = $item.text().trim();

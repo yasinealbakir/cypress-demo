@@ -11,9 +11,9 @@ export class EvrakTipiTanim {
         cy.get(txtAd).clear().type(ad)
         cy.get(txtKod).clear().type(kod)
         cy.xpath(drpBelge).click()
-        cy.clickIfTextInListMatches(listBelge, belge)
+        cy.clickIfTextInListMatchesXpath(listBelge, belge)
         cy.xpath(drpAtananPersonelTipi).click()
-        cy.clickIfTextInListMatches(listAtananPersonelTipi, personel)
+        cy.clickIfTextInListMatchesXpath(listAtananPersonelTipi, personel)
         cy.clickToSaveBtnInPopup()
         cy.verifyToastMessage(expectedMessage)
     }

@@ -27,6 +27,6 @@ export class Menu {
 
     searchInMenu(searchText, clickItem) {
         cy.get(txtMenudeAra).clear().type(searchText)
-        cy.clickIfTextInListMatches(listMenuItems, clickItem)
+        cy.clickIfTextInListMatchesXpath(listMenuItems, clickItem)
     }
 }
