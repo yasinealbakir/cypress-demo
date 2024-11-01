@@ -23,7 +23,7 @@ describe('Dış Ticaret Personel Birim Atama Listesi Ekranı', { testIsolation: 
     });
 
     it('Personel Atama Testi', () => {
-        disTicaret.create('MUSTAFA YILMAZ', 'Dış Ticaret Merkez', 'Başarı ile kaydedildi.')
+        disTicaret.create('YASİN', 'Dış Ticaret Merkez', 'Başarı ile kaydedildi.')
     });
 
 });
